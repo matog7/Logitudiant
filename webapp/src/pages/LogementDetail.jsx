@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const LogementDetail = () => {
   const { id } = useParams();
@@ -10,6 +11,11 @@ const LogementDetail = () => {
     prix: "450€",
     surface: "18m²",
     localisation: "Centre-ville",
+    adresse: "1 rue de la Paix, 35000 Rennes",
+    coordinates: {
+      lat: 48.117266,
+      lng: -1.677793,
+    },
     image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
     description: "Magnifique studio entièrement rénové...",
     equipements: ["Wifi", "Machine à laver", "Cuisine équipée"],
@@ -21,6 +27,17 @@ const LogementDetail = () => {
       telephone: "06 XX XX XX XX",
       email: "contact@example.com",
     },
+  };
+
+  const mapContainerStyle = {
+    width: "100%",
+    height: "400px",
+    borderRadius: "8px",
+  };
+
+  const center = {
+    lat: logement.coordinates.lat,
+    lng: logement.coordinates.lng,
   };
 
   return (
@@ -37,7 +54,22 @@ const LogementDetail = () => {
             <h2>Description</h2>
             <p>{logement.description}</p>
           </div>
-          <div className="equipements">
+
+          <div className="localisation-section mt-6">
+            <h2 className="text-xl font-semibold mb-4">Localisation</h2>
+            <p className="mb-4">{logement.adresse}</p>
+            <LoadScript googleMapsApiKey="VOTRE_CLÉ_API_GOOGLE">
+              <GoogleMap
+                mapContainerStyle={mapContainerStyle}
+                center={center}
+                zoom={15}
+              >
+                <Marker position={center} />
+              </GoogleMap>
+            </LoadScript>
+          </div>
+
+          <div className="equipements mt-6">
             <h2>Équipements</h2>
             <ul>
               {logement.equipements.map((item, index) => (

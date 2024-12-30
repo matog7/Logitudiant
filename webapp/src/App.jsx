@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import LogementDetail from "./pages/LogementDetail";
 import Rechercher from "./pages/Rechercher";
+import Login from "./pages/Login";
 
 function App() {
   const [connected, setConnected] = useState(false);
@@ -43,7 +44,10 @@ function App() {
           <div className="nav-container">
             <div className="nav-left">
               <Link to="/" className="logo-link">
-                <div className="logo-container" onClick={() => setConnected(true)}>
+                <div
+                  className="logo-container"
+                  onClick={() => setConnected(true)}
+                >
                   <img src={logo} alt="Logitudiant" className="logo-icon" />
                 </div>
               </Link>
@@ -99,7 +103,11 @@ function App() {
             }
           />
           <Route path="/logement/:id" element={<LogementDetail />} />
-          <Route path="/rechercher" element={<Rechercher logements={logements} />} />
+          <Route
+            path="/rechercher"
+            element={<Rechercher logements={logements} />}
+          />
+          <Route path="/connexion" element={<Login />} />
         </Routes>
       </div>
     </Router>
