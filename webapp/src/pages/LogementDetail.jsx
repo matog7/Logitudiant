@@ -27,6 +27,7 @@ const LogementDetail = () => {
       telephone: "06 XX XX XX XX",
       email: "contact@example.com",
     },
+    proprietaire: "matau56100@gmail.com",
   };
 
   const mapContainerStyle = {
@@ -88,7 +89,10 @@ const LogementDetail = () => {
               <p>Surface: {logement.surface}</p>
               <p>Disponibilité: {logement.disponibilite}</p>
             </div>
-            <button className="contact-button">
+            <button
+              className="contact-button"
+              onClick={() => window.open(`mailto:${logement.proprietaire}`)}
+            >
               Contacter le propriétaire
             </button>
           </div>

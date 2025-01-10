@@ -162,7 +162,7 @@ function App() {
               <div className="footer-section">
                 <h3>Aide</h3>
                 <Link to="/faq">FAQ</Link>
-                <Link to="/guide">Guide d'utilisation</Link>
+                <Link to="/guide">Guide d&apos;utilisation</Link>
                 <Link to="/support">Support</Link>
               </div>
               <div className="footer-section">
@@ -191,7 +191,7 @@ function App() {
               </div>
             </div>
             <div className="footer-bottom">
-              <p>&copy; 2024 Logitudiant. Tous droits réservés.</p>
+              <p>&copy; 2025 Logitudiant. Tous droits réservés.</p>
             </div>
           </div>
         </footer>

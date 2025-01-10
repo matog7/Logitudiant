@@ -472,7 +472,7 @@ body {
 
 /* Styles pour le footer et les breadcrumbs */
 .main-content {
-  min-height: calc(100vh - 200px); /*Ajustement pour le footer */
+  min-height: calc(100vh - 225px); /*Ajustement pour le footer */
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -480,14 +480,16 @@ body {
 }
 
 .footer {
+  display: flex;
   background-color: #ffffff;
   padding: 2rem 0;
   margin-top: auto;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  justify-content: center;
 }
 
 .footer-content {
-  max-width: 1200px;
+  width: 1000px;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -518,6 +520,7 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin: 2rem 0;
+  justify-content: center;
 }
 
 .footer-section {
