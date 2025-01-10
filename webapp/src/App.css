@@ -174,6 +174,10 @@ body {
   transform: scale(1.05);
 }
 
+.logement-card:hover {
+  transform: scale(1.05);
+}
+
 .image-container {
   position: relative;
   overflow: hidden;
