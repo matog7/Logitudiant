@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import logo from "./assets/logo.png";
 import LogementCard from "./components/LogementCard";
@@ -13,6 +13,7 @@ import {
 import LogementDetail from "./pages/LogementDetail";
 import Rechercher from "./pages/Rechercher";
 import Login from "./pages/Login";
+import { Sun, Moon } from "lucide-react";
 
 // Composant Breadcrumbs séparé
 const Breadcrumbs = () => {
@@ -52,6 +53,7 @@ const Breadcrumbs = () => {
 
 function App() {
   const [connected, setConnected] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
   const [logements] = useState([
     {
       id: 1,
@@ -73,6 +75,21 @@ function App() {
     },
     // ... autres logements
   ]);
+
+  // Gestion du thème
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
+    } else {
+      document.documentElement.classList.add("light");
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
+
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+  };
 
   return (
     <Router>
@@ -124,6 +141,17 @@ function App() {
               <Link to="/inscription" className="nav-button primary">
                 S&apos;inscrire
               </Link>
+              <button
+                onClick={toggleTheme}
+                className="theme-toggle"
+                aria-label="Toggle theme"
+              >
+                {darkMode ? (
+                  <Sun className="theme-icon" />
+                ) : (
+                  <Moon className="theme-icon" />
+                )}
+              </button>
             </div>
           </div>
         </nav>

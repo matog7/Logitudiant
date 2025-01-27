@@ -224,10 +224,10 @@ body {
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.2);
   border: none;
   cursor: pointer;
   display: flex;
@@ -242,8 +242,8 @@ body {
 }
 
 .favorite-button svg {
-  width: 44px;
-  height: 44px;
+  width: 24px;
+  height: 24px;
 }
 
 .favorite-button:hover {
@@ -252,12 +252,12 @@ body {
 
 .favorite-button.active {
   opacity: 1;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.2);
 }
 
-.favorite-button.active:hover {
+/* .favorite-button.active:hover {
   background: white;
-}
+} */
 
 /* Ajout de styles pour la page de détail */
 .logement-detail {
@@ -567,4 +567,139 @@ body {
   .footer-section {
     text-align: center;
   }
+}
+
+/* Ajoutez ces styles pour le bouton de thème */
+.theme-toggle {
+  padding: 0.5rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+  margin-right: 0.5rem;
+}
+
+.theme-toggle:hover {
+  background: rgba(0, 151, 178, 0.1);
+}
+
+.theme-icon {
+  width: 20px;
+  height: 20px;
+  color: #64748b;
+}
+
+.theme-toggle:hover .theme-icon {
+  color: #0097b2;
+}
+
+/* Light mode (par défaut) */
+:root {
+  --bg-primary: #f0f0f0;
+  --bg-secondary: #ffffff;
+  --text-primary: #2c3e50;
+  --text-secondary: #64748b;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --accent-color: #0097b2;
+  --accent-hover: #02748e;
+}
+
+/* Styles pour le mode clair */
+:root.light {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+:root.light .navbar,
+:root.light .footer,
+:root.light .logement-card,
+:root.light .login-card,
+:root.light .prix-card {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+:root.light .nav-links a {
+  color: var(--text-secondary);
+}
+
+:root.light .nav-links a:hover,
+:root.light .nav-links a.active {
+  background: rgba(0, 151, 178, 0.1);
+  color: var(--accent-color);
+}
+
+:root.light .nav-button {
+  color: var(--text-secondary);
+}
+
+:root.light .theme-icon {
+  color: var(--text-secondary);
+}
+
+:root.light .footer-section h3 {
+  color: var(--text-primary);
+}
+
+:root.light .footer-section a,
+:root.light .footer-bottom {
+  color: var(--text-secondary);
+}
+
+/* Styles existants pour le mode sombre */
+:root.dark {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #242424;
+  --text-primary: #ffffff;
+  --text-secondary: #e2e8f0;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --accent-color: #0097b2;
+  --accent-hover: #02748e;
+
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+:root.dark .navbar,
+:root.dark .footer {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+:root.dark .logement-card,
+:root.dark .login-card,
+:root.dark .prix-card {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+:root.dark .nav-links a {
+  color: var(--text-secondary);
+}
+
+:root.dark .nav-links a:hover,
+:root.dark .nav-links a.active {
+  background: rgba(0, 151, 178, 0.2);
+  color: var(--accent-color);
+}
+
+:root.dark .nav-button {
+  color: var(--text-secondary);
+}
+
+:root.dark .theme-icon {
+  color: var(--text-secondary);
+}
+
+:root.dark .footer-section h3 {
+  color: var(--text-primary);
+}
+
+:root.dark .footer-section a,
+:root.dark .footer-bottom {
+  color: var(--text-secondary);
 }
