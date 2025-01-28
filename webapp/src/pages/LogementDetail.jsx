@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import moment from "moment";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const LogementDetail = () => {
@@ -21,7 +22,7 @@ const LogementDetail = () => {
     equipements: ["Wifi", "Machine à laver", "Cuisine équipée"],
     charges: "50€",
     depot: "900€",
-    disponibilite: "Immédiate",
+    disponibilite: moment().locale('fr').format('LL'),
     contact: {
       nom: "Jean Dupont",
       telephone: "06 XX XX XX XX",
@@ -54,6 +55,8 @@ const LogementDetail = () => {
           <div className="description">
             <h2>Description</h2>
             <p>{logement.description}</p>
+            <h3>Disponibilité</h3>
+            <p>{logement.disponibilite}</p>
           </div>
 
           <div className="localisation-section mt-6">

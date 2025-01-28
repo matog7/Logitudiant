@@ -1,8 +1,13 @@
-/* Ajoutez ces styles au début de votre fichier CSS */
+:root {
+  --font-heading: "Poppins", sans-serif;
+  --heading-color: #2c3e50;
+  --font-body: "Roboto", sans-serif;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: "Bai Jamjuree", sans-serif;
+  font-family: var(--font-body);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -71,6 +76,7 @@ body {
   text-decoration: none;
   color: #64748b;
   font-size: 0.95rem;
+  font-weight: 400;
   transition: color 0.2s;
   padding: 0.5rem 1rem;
   border-radius: 6px;
@@ -174,6 +180,10 @@ body {
   transform: scale(1.05);
 }
 
+.logement-card:hover {
+  transform: scale(1.05);
+}
+
 .image-container {
   position: relative;
   overflow: hidden;
@@ -203,7 +213,7 @@ body {
 }
 
 .prix {
-  font-size: 1.5rem;
+  font-size:medium;
   color: #02748e;
   font-weight: bold;
   margin-bottom: 1rem;
@@ -214,6 +224,7 @@ body {
   display: flex;
   justify-content: space-between;
   color: #7f8c8d;
+  font-size: small;
 }
 
 .favorite-button {
@@ -281,6 +292,7 @@ body {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 2rem;
+  color: black
 }
 
 .detail-left img {
@@ -486,6 +498,7 @@ body {
   margin-top: auto;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   justify-content: center;
+  border-radius: 12px
 }
 
 .footer-content {
@@ -563,4 +576,51 @@ body {
   .footer-section {
     text-align: center;
   }
+}
+
+/* ------------ Configuration pour les polices d'écritures ------------ */
+
+/* Styles pour les titres */
+h1, h2, h3, .logo {
+  font-family: var(--font-heading);
+  color: var(--heading-color);
+}
+
+/* Style pour le footer */
+.footer {
+  font-family: var(--font-heading);
+}
+
+.footer-section h3 {
+  font-family: var(--font-heading);
+}
+
+.footer-section a, .footer-bottom {
+  font-family: var(--font-body);
+}
+
+/* Styles pour les cartes de logement */
+.logement-info h2 {
+  font-family: var(--font-heading);
+}
+
+.prix, .details, .nav-links, .nav-right, .detail-content {
+  font-family: var(--font-body);
+}
+
+/* Styles pour la page de détail */
+.detail-header h1 {
+  font-family: var(--font-heading);
+}
+
+.description h2, .equipements h2, .prix-card h2 {
+  font-family: var(--font-heading);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#contact-section {
+  scroll-margin-top: 100px;
 }

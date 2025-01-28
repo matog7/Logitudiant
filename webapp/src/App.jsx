@@ -1,57 +1,23 @@
 import { useState } from "react";
+import moment from 'moment';
 import "./App.css";
-import logo from "./assets/logo.png";
 import LogementCard from "./components/LogementCard";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Link,
-  NavLink,
   useLocation,
 } from "react-router-dom";
 import LogementDetail from "./pages/LogementDetail";
 import Rechercher from "./pages/Rechercher";
 import Login from "./pages/Login";
-
-// Composant Breadcrumbs séparé
-const Breadcrumbs = () => {
-  const location = useLocation();
-  const pathnames = location.pathname.split("/").filter((x) => x);
-
-  // Mapping des routes pour un affichage en français
-  const routeNames = {
-    connexion: "Connexion",
-    rechercher: "Rechercher",
-    logement: "Logement",
-    favoris: "Favoris",
-    "a-propos": "À propos",
-  };
-
-  return (
-    <div className="breadcrumbs">
-      <Link to="/">Accueil</Link>
-      {pathnames.map((name, index) => {
-        const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
-        const isLast = index === pathnames.length - 1;
-
-        return (
-          <span key={name}>
-            {" > "}
-            {isLast ? (
-              <span className="current">{routeNames[name] || name}</span>
-            ) : (
-              <Link to={routeTo}>{routeNames[name] || name}</Link>
-            )}
-          </span>
-        );
-      })}
-    </div>
-  );
-};
+import About from './pages/About';
+import Favorite from "./pages/Favorite";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
-  const [connected, setConnected] = useState(false);
   const [logements] = useState([
     {
       id: 1,
@@ -61,6 +27,8 @@ function App() {
       localisation: "Centre-ville",
       image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
       isFavorite: false,
+      description: "Charmant studio entièrement rénové situé en plein cœur du centre-ville. Cuisine équipée moderne, salle de bain avec douche à l'italienne, nombreux rangements. Proche de toutes commodités, transports en commun et commerces à proximité immédiate. Idéal pour étudiant. Chauffage individuel électrique, double vitrage. Disponible immédiatement.",
+      dispo: moment().format('LL')
     },
     {
       id: 2,
@@ -77,56 +45,7 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <nav className="navbar">
-          <div className="nav-container">
-            <div className="nav-left">
-              <Link to="/" className="logo-link">
-                <div
-                  className="logo-container"
-                  onClick={() => setConnected(true)}
-                >
-                  <img src={logo} alt="Logitudiant" className="logo-icon" />
-                </div>
-              </Link>
-              <div className="nav-links">
-                <NavLink
-                  to="/"
-                  className={({ isActive }) => (isActive ? "active" : "")}
-                >
-                  Accueil
-                </NavLink>
-                <NavLink
-                  to="/rechercher"
-                  className={({ isActive }) => (isActive ? "active" : "")}
-                >
-                  Rechercher
-                </NavLink>
-                {connected ? (
-                  <NavLink
-                    to="/favoris"
-                    className={({ isActive }) => (isActive ? "active" : "")}
-                  >
-                    Favoris
-                  </NavLink>
-                ) : null}
-                <NavLink
-                  to="/a-propos"
-                  className={({ isActive }) => (isActive ? "active" : "")}
-                >
-                  À propos
-                </NavLink>
-              </div>
-            </div>
-            <div className="nav-right">
-              <Link to="/connexion" className="nav-button">
-                Se connecter
-              </Link>
-              <Link to="/inscription" className="nav-button primary">
-                S&apos;inscrire
-              </Link>
-            </div>
-          </div>
-        </nav>
+        <Navbar />
 
         <main className="main-content">
           <Routes>
@@ -146,55 +65,12 @@ function App() {
               element={<Rechercher logements={logements} />}
             />
             <Route path="/connexion" element={<Login />} />
+            <Route path="/a-propos" element={<About />} />
+            <Route path="/favoris" element={<Favorite />} />
           </Routes>
         </main>
 
-        <footer className="footer">
-          <div className="footer-content">
-            <Breadcrumbs />
-            <div className="footer-links">
-              <div className="footer-section">
-                <h3>À propos</h3>
-                <Link to="/a-propos">Qui sommes-nous</Link>
-                <Link to="/contact">Contact</Link>
-                <Link to="/mentions-legales">Mentions légales</Link>
-              </div>
-              <div className="footer-section">
-                <h3>Aide</h3>
-                <Link to="/faq">FAQ</Link>
-                <Link to="/guide">Guide d&apos;utilisation</Link>
-                <Link to="/support">Support</Link>
-              </div>
-              <div className="footer-section">
-                <h3>Suivez-nous</h3>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Twitter
-                </a>
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Facebook
-                </a>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Instagram
-                </a>
-              </div>
-            </div>
-            <div className="footer-bottom">
-              <p>&copy; 2025 Logitudiant. Tous droits réservés.</p>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </Router>
   );
