@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import moment from 'moment';
 import "./App.css";
 import LogementCard from "./components/LogementCard";
@@ -12,12 +12,14 @@ import {
 import LogementDetail from "./pages/LogementDetail";
 import Rechercher from "./pages/Rechercher";
 import Login from "./pages/Login";
+import { Sun, Moon } from "lucide-react";
 import About from './pages/About';
 import Favorite from "./pages/Favorite";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
   const [logements] = useState([
     {
       id: 1,
@@ -42,10 +44,85 @@ function App() {
     // ... autres logements
   ]);
 
+  // Gestion du thème
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
+    } else {
+      document.documentElement.classList.add("light");
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
+
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
     <Router>
       <div className="app">
-        <Navbar />
+        <nav className="navbar">
+          <div className="nav-container">
+            <div className="nav-left">
+              <Link to="/" className="logo-link">
+                <div
+                  className="logo-container"
+                  onClick={() => setConnected(true)}
+                >
+                  <img src={logo} alt="Logitudiant" className="logo-icon" />
+                </div>
+              </Link>
+              <div className="nav-links">
+                <NavLink
+                  to="/"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Accueil
+                </NavLink>
+                <NavLink
+                  to="/rechercher"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Rechercher
+                </NavLink>
+                {connected ? (
+                  <NavLink
+                    to="/favoris"
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    Favoris
+                  </NavLink>
+                ) : null}
+                <NavLink
+                  to="/a-propos"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  À propos
+                </NavLink>
+              </div>
+            </div>
+            <div className="nav-right">
+              <Link to="/connexion" className="nav-button">
+                Se connecter
+              </Link>
+              <Link to="/inscription" className="nav-button primary">
+                S&apos;inscrire
+              </Link>
+              <button
+                onClick={toggleTheme}
+                className="theme-toggle"
+                aria-label="Toggle theme"
+              >
+                {darkMode ? (
+                  <Sun className="theme-icon" />
+                ) : (
+                  <Moon className="theme-icon" />
+                )}
+              </button>
+            </div>
+          </div>
+        </nav>
 
         <main className="main-content">
           <Routes>
