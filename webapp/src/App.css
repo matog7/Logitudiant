@@ -2,6 +2,13 @@
   --font-heading: "Poppins", sans-serif;
   --heading-color: #2c3e50;
   --font-body: "Roboto", sans-serif;
+  --bg-primary: #f0f0f0;
+  --bg-secondary: #ffffff;
+  --text-primary: #2c3e50;
+  --text-secondary: #64748b;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --accent-color: #0097b2;
+  --accent-hover: #02748e;
 }
 
 body {
@@ -11,7 +18,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #f0f0f0;
+  background-color: var(--bg-primary);
 }
 
 .navbar {
@@ -213,7 +220,7 @@ body {
 }
 
 .prix {
-  font-size:medium;
+  font-size: medium;
   color: #02748e;
   font-weight: bold;
   margin-bottom: 1rem;
@@ -292,7 +299,7 @@ body {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 2rem;
-  color: black
+  color: black;
 }
 
 .detail-left img {
@@ -498,7 +505,7 @@ body {
   margin-top: auto;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   justify-content: center;
-  border-radius: 12px
+  border-radius: 12px;
 }
 
 .footer-content {
@@ -581,7 +588,10 @@ body {
 /* ------------ Configuration pour les polices d'écritures ------------ */
 
 /* Styles pour les titres */
-h1, h2, h3, .logo {
+h1,
+h2,
+h3,
+.logo {
   font-family: var(--font-heading);
   color: var(--heading-color);
 }
@@ -595,7 +605,8 @@ h1, h2, h3, .logo {
   font-family: var(--font-heading);
 }
 
-.footer-section a, .footer-bottom {
+.footer-section a,
+.footer-bottom {
   font-family: var(--font-body);
 }
 
@@ -604,7 +615,11 @@ h1, h2, h3, .logo {
   font-family: var(--font-heading);
 }
 
-.prix, .details, .nav-links, .nav-right, .detail-content {
+.prix,
+.details,
+.nav-links,
+.nav-right,
+.detail-content {
   font-family: var(--font-body);
 }
 
@@ -613,7 +628,9 @@ h1, h2, h3, .logo {
   font-family: var(--font-heading);
 }
 
-.description h2, .equipements h2, .prix-card h2 {
+.description h2,
+.equipements h2,
+.prix-card h2 {
   font-family: var(--font-heading);
 }
 
@@ -654,16 +671,6 @@ html {
 }
 
 /* Light mode (par défaut) */
-:root {
-  --bg-primary: #f0f0f0;
-  --bg-secondary: #ffffff;
-  --text-primary: #2c3e50;
-  --text-secondary: #64748b;
-  --border-color: rgba(0, 0, 0, 0.1);
-  --accent-color: #0097b2;
-  --accent-hover: #02748e;
-}
-
 /* Styles pour le mode clair */
 :root.light {
   background-color: var(--bg-primary);
@@ -691,6 +698,10 @@ html {
 
 :root.light .nav-button {
   color: var(--text-secondary);
+}
+
+:root.light .nav-button.primary {
+  color: var(--bg-primary);
 }
 
 :root.light .theme-icon {
