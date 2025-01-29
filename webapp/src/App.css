@@ -22,7 +22,7 @@ body {
       rgba(255, 255, 255, 0.75),
       rgba(255, 255, 255, 0.75)
     ),
-    url("/src/assets/background.png");
+    url("/src/assets/background2.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -67,23 +67,22 @@ body {
   margin: 0;
 }
 
+.logo-container img {
+  width: 120px;
+  height: 120px;
+  padding: 0.5rem;
+  transition: filter 0.3s ease;
+}
+
 .logo-container {
   display: flex;
   align-items: center;
-  /* padding: 0.25rem; */
   border-radius: 6px;
   transition: background-color 0.2s;
-  margin: -0.5rem 0;
 }
 
 .logo-container:hover {
   background-color: rgba(0, 151, 178, 0.1);
-}
-
-.logo-icon {
-  width: 340px;
-  height: 200px;
-  transition: filter 0.3s ease;
 }
 
 .logo-link {
@@ -391,203 +390,6 @@ body {
 
 .contact-button:hover {
   background: #02748e;
-}
-
-/* Styles pour la page de connexion */
-.login-page {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--bg-primary);
-  padding: 2rem;
-}
-
-.login-container {
-  display: flex;
-  background: var(--bg-secondary);
-  border-radius: 24px;
-  overflow: hidden;
-  width: 100%;
-  max-width: 1200px;
-  min-height: 600px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-}
-
-.login-left {
-  flex: 1;
-  background-image: linear-gradient(
-      rgba(0, 151, 178, 0.4),
-      rgba(2, 116, 142, 0.3)
-    ),
-    url("/src/assets/image.png");
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  padding: 3rem;
-  display: flex;
-  align-items: flex-start;
-  color: var(--bg-secondary);
-}
-
-.welcome-text {
-  position: relative;
-  z-index: 2;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.hello-badge {
-  background: rgba(255, 255, 255, 0.9);
-  color: var(--accent-color);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  display: inline-block;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.login-left h1,
-.login-left h2 {
-  margin: 0;
-  font-size: 2.5rem;
-  color: white;
-  line-height: 1.2;
-}
-
-.login-left p {
-  margin-top: 1rem;
-  font-size: 1.1rem;
-  opacity: 0.9;
-}
-
-.login-right {
-  flex: 1;
-  padding: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.login-form-container {
-  max-width: 400px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.login-form-container h2 {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-  color: var(--text-primary);
-}
-
-.subtitle {
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: var(--text-primary);
-}
-
-.form-group input {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  font-size: 1rem;
-}
-
-.form-group input:focus {
-  outline: none;
-  border-color: var(--accent-color);
-  box-shadow: 0 0 0 3px rgba(0, 151, 178, 0.2);
-}
-
-.forgot-password {
-  display: block;
-  text-align: right;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
-  text-decoration: none;
-}
-
-.forgot-password:hover {
-  color: var(--accent-color);
-}
-
-.submit-button {
-  width: 100%;
-  padding: 1rem;
-  background-color: var(--accent-color);
-  color: var(--bg-secondary);
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-bottom: 2rem;
-}
-
-.submit-button:hover {
-  background-color: var(--accent-hover);
-}
-
-.social-login {
-  text-align: center;
-}
-
-.social-login p {
-  color: var(--text-secondary);
-  font-size: 0.8rem;
-  margin-bottom: 1rem;
-  position: relative;
-}
-
-.social-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.social-button {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid var(--border-color);
-  background: var(--bg-secondary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s;
-  color: var(--text-secondary);
-}
-
-.social-button:hover {
-  background: var(--bg-primary);
-  color: var(--accent-color);
-}
-
-@media (max-width: 768px) {
-  .login-container {
-    flex-direction: column;
-  }
-
-  .login-left {
-    padding: 2rem;
-    min-height: 300px;
-  }
-
-  .login-right {
-    padding: 2rem;
-  }
 }
 
 /* Styles pour le footer et les breadcrumbs */

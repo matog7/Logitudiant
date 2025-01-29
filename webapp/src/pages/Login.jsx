@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaFacebook, FaGoogle, FaApple, FaTwitter } from "react-icons/fa";
+import "../styles/login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");

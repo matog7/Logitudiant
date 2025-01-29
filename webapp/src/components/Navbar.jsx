@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import logoSvg from "../assets/logo-sans-fond.svg";
+import logo from "../assets/Logo Logitudiant.png";
 import { Sun, Moon } from "lucide-react";
 
 const Navbar = () => {
@@ -26,16 +26,7 @@ const Navbar = () => {
         <div className="nav-left">
           <Link to="/" className="logo-link">
             <div className="logo-container" onClick={() => setConnected(true)}>
-              <img
-                src={logoSvg}
-                alt="Logitudiant"
-                className={`logo-icon ${darkMode ? "dark" : "light"}`}
-                style={{
-                  filter: darkMode
-                    ? "invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%)"
-                    : "invert(47%) sepia(82%) saturate(463%) hue-rotate(152deg) brightness(91%) contrast(101%)",
-                }}
-              />
+              <img src={logo} alt="Logitudiant" className="logo-icon" />
             </div>
           </Link>
           <div className="nav-links">
