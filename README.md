@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="src/assets/Logo Logitudiant.png" alt="Logitudiant Logo" width="200"/>
+  <img src="webapp/src/assets/Logo Logitudiant.png" alt="Logitudiant Logo" width="200"/>
   <h1>Logitudiant</h1>
   <p>Plateforme de recherche de logements pour étudiants</p>
 </div>
@@ -31,6 +31,7 @@
 - Intégration de l'API Google Maps
 - Gestion des états avec React Hooks
 - Système de thème personnalisé
+- Gestion de l'API et de l'authentification via AdonisJS
 
 ## 🎨 Design
 
