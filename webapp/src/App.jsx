@@ -1,3 +1,5 @@
+import React from "react";
+console.log("React Version:", React.version);
 import { useState } from "react";
 import "./App.css";
 import logo from "./assets/logo.png";

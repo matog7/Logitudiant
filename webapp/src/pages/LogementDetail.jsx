@@ -1,8 +1,15 @@
 import { useParams } from "react-router-dom";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
+import { MapPin, Loader } from "lucide-react";
+import { Alert } from "@mui/material";
+
+const MAPS_API_KEY = import.meta.env.VITE_MAPS_API_KEY;
 
 const LogementDetail = () => {
   const { id } = useParams();
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: MAPS_API_KEY,
+  });
 
   // Simulons des données détaillées (à remplacer par vos vraies données)
   const logement = {
@@ -13,8 +20,8 @@ const LogementDetail = () => {
     localisation: "Centre-ville",
     adresse: "1 rue de la Paix, 35000 Rennes",
     coordinates: {
-      lat: 48.117266,
-      lng: -1.677793,
+      lat: 47.759003301811134,
+      lng: -3.3895119733020054,
     },
     image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
     description: "Magnifique studio entièrement rénové...",
@@ -36,16 +43,27 @@ const LogementDetail = () => {
     borderRadius: "8px",
   };
 
-  const center = {
+  const position = {
     lat: logement.coordinates.lat,
     lng: logement.coordinates.lng,
   };
+
+  if (loadError) return <div>Erreur de chargement de la carte</div>;
+  if (!isLoaded)
+    return (
+      <div className="map-loading">
+        <Loader className="animate-spin" /> Chargement de la carte...
+      </div>
+    );
 
   return (
     <div className="logement-detail">
       <div className="detail-header">
         <h1>{logement.titre}</h1>
-        <p className="localisation">{logement.localisation}</p>
+        <p className="localisation">
+          <MapPin size={18} className="inline-block mr-1" />
+          {logement.localisation}
+        </p>
       </div>
 
       <div className="detail-content">
@@ -59,15 +77,21 @@ const LogementDetail = () => {
           <div className="localisation-section mt-6">
             <h2 className="text-xl font-semibold mb-4">Localisation</h2>
             <p className="mb-4">{logement.adresse}</p>
-            <LoadScript googleMapsApiKey="VOTRE_CLÉ_API_GOOGLE">
+            {loadError ? (
+              <Alert severity="warning">Erreur</Alert>
+            ) : !isLoaded ? (
+              <div className="map-loading">
+                <Loader className="animate-spin" /> Chargement de la carte...
+              </div>
+            ) : (
               <GoogleMap
                 mapContainerStyle={mapContainerStyle}
-                center={center}
+                center={position}
                 zoom={15}
               >
-                <Marker position={center} />
+                <MarkerF position={position} />
               </GoogleMap>
-            </LoadScript>
+            )}
           </div>
 
           <div className="equipements mt-6">
