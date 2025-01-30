@@ -1,3 +1,5 @@
+import React from "react";
+console.log("React Version:", React.version);
 import { useState } from "react";
 import moment from "moment";
 import "./App.css";
