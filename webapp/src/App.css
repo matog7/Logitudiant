@@ -9,6 +9,9 @@
   --border-color: rgba(0, 0, 0, 0.1);
   --accent-color: #0097b2;
   --accent-hover: #02748e;
+  --logo-color: brightness(0) sepia(80%) hue-rotate(178deg) saturate(1000%)
+    invert(48%) sepia(82%) saturate(844%) hue-rotate(153deg) brightness(74%)
+    contrast(95%);
 }
 
 body {
@@ -19,137 +22,16 @@ body {
   flex-direction: column;
   min-height: 100vh;
   background-image: linear-gradient(
-      rgba(255, 255, 255, 0.75),
-      rgba(255, 255, 255, 0.75)
+      rgba(0, 151, 178, 0.4),
+      rgba(2, 116, 142, 0.3)
     ),
-    url("/src/assets/background2.png");
+    url("/src/assets/fond.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-}
-
-.navbar {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  background: #ffffff;
-  margin-top: 10px;
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
-  border-radius: 12px;
-  z-index: 1000;
-}
-
-.nav-container {
-  width: 1200px;
-  height: 50px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-}
-
-.nav-left {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #2c3e50;
-  margin: 0;
-}
-
-.logo-container img {
-  width: 120px;
-  height: 120px;
-  padding: 0.5rem;
-  transition: filter 0.3s ease;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-  border-radius: 6px;
-  transition: background-color 0.2s;
-}
-
-.logo-container:hover {
-  background-color: rgba(0, 151, 178, 0.1);
-}
-
-.logo-link {
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-}
-
-.nav-links {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #64748b;
-  font-size: 0.95rem;
-  font-weight: 400;
-  transition: color 0.2s;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-}
-
-.nav-links a:hover {
-  color: #02748e;
-  background: rgba(0, 151, 178, 0.2);
-}
-
-.nav-links a.active {
-  color: #02748e;
-  font-weight: 500;
-  background: rgba(0, 151, 178, 0.2);
-}
-
-.logo-link {
-  text-decoration: none;
-}
-
-.nav-button {
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-  background: transparent;
-  color: #64748b;
-}
-
-.nav-right {
-  display: flex;
-  gap: 1rem;
-}
-
-.nav-button:hover {
-  background: rgba(0, 151, 178, 0.2); /* Couleur verte avec transparence */
-  color: #02748e; /* Même couleur que le logo */
-}
-
-.nav-button.primary {
-  background: #0097b2;
-  color: white;
-}
-
-.nav-button.primary:hover {
-  background: #02748e;
 }
 
 /* Ajustement pour le contenu existant */
@@ -188,308 +70,7 @@ body {
   padding: 0 2rem;
 }
 
-.logement-card {
-  /* Réduction de la taille minimale */
-  min-width: 240px; /* Ajouté pour contrôler la taille minimale */
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
-  position: relative;
-  cursor: pointer;
-}
-
-.logement-card:hover img {
-  transform: scale(1.05);
-}
-
-.logement-card:hover {
-  transform: scale(1.05);
-}
-
-.image-container {
-  position: relative;
-  overflow: hidden;
-}
-
-.image-container img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.logement-card img {
-  width: 100%;
-  height: 160px; /* Réduit de 200px à 160px */
-  object-fit: cover;
-}
-
-.logement-info {
-  padding: 1rem; /* Réduit de 1.5rem à 1rem */
-}
-
-.logement-info h2 {
-  font-size: 1.1rem; /* Réduit de 1.25rem à 1.1rem */
-  margin-bottom: 0.5rem;
-  color: #2c3e50;
-}
-
-.prix {
-  font-size: medium;
-  color: #02748e;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-.details {
-  margin-top: auto; /* Pousse les détails vers le bas */
-  display: flex;
-  justify-content: space-between;
-  color: #7f8c8d;
-  font-size: small;
-}
-
-.favorite-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.2);
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease, background-color 0.3s ease;
-}
-
-.logement-card:hover .favorite-button {
-  opacity: 1;
-}
-
-.favorite-button svg {
-  width: 24px;
-  height: 24px;
-}
-
-.favorite-button:hover {
-  background: rgba(0, 0, 0, 0.7);
-}
-
-.favorite-button.active {
-  opacity: 1;
-  background: rgba(0, 0, 0, 0.2);
-}
-
-/* .favorite-button.active:hover {
-  background: white;
-} */
-
-/* Ajout de styles pour la page de détail */
-.logement-detail {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.detail-header {
-  margin-bottom: 2rem;
-}
-
-.detail-header h1 {
-  font-size: 2rem;
-  color: #2c3e50;
-  margin-bottom: 0.5rem;
-}
-
-.localisation {
-  color: #64748b;
-  font-size: 1.1rem;
-}
-
-.detail-content {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 2rem;
-  color: black;
-}
-
-.detail-left img {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 2rem;
-}
-
-.description,
-.equipements {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 12px;
-  margin-bottom: 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.description h2,
-.equipements h2 {
-  color: #2c3e50;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-}
-
-.equipements ul {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
-}
-
-.prix-card {
-  position: sticky;
-  top: 2rem;
-  background: white;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.prix-card h2 {
-  font-size: 2rem;
-  color: #02748e;
-  margin-bottom: 1rem;
-}
-
-.prix-details {
-  margin-bottom: 1.5rem;
-}
-
-.prix-details p {
-  margin: 0.5rem 0;
-  color: #64748b;
-}
-
-.contact-button {
-  width: 100%;
-  padding: 1rem;
-  background: #0097b2;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.contact-button:hover {
-  background: #02748e;
-}
-
-/* Styles pour le footer et les breadcrumbs */
-.main-content {
-  min-height: calc(100vh - 225px); /*Ajustement pour le footer */
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.footer {
-  display: flex;
-  background-color: #ffffff;
-  padding: 2rem 0;
-  margin-top: auto;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  justify-content: center;
-  border-radius: 12px;
-}
-
-.footer-content {
-  width: 1000px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.breadcrumbs {
-  padding: 1rem 0;
-  color: #64748b;
-  font-size: 0.9rem;
-}
-
-.breadcrumbs a {
-  color: #0097b2;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.breadcrumbs a:hover {
-  color: #02748e;
-}
-
-.breadcrumbs .current {
-  color: #64748b;
-  font-weight: 500;
-}
-
-.footer-links {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin: 2rem 0;
-  justify-content: center;
-}
-
-.footer-section {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.footer-section h3 {
-  color: #2c3e50;
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-}
-
-.footer-section a {
-  color: #64748b;
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: color 0.2s;
-}
-
-.footer-section a:hover {
-  color: #0097b2;
-}
-
-.footer-bottom {
-  text-align: center;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  color: #64748b;
-  font-size: 0.9rem;
-}
-
-@media (max-width: 768px) {
-  .footer-links {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .footer-section {
-    text-align: center;
-  }
-}
-
 /* ------------ Configuration pour les polices d'écritures ------------ */
-
 /* Styles pour les titres */
 h1,
 h2,
@@ -620,6 +201,10 @@ html {
   color: var(--text-secondary);
 }
 
+:root.light .footer-section a:hover {
+  color: #0097b2;
+}
+
 /* Styles existants pour le mode sombre */
 :root.dark {
   --bg-primary: #1a1a1a;
@@ -629,6 +214,7 @@ html {
   --border-color: rgba(255, 255, 255, 0.1);
   --accent-color: #0097b2;
   --accent-hover: #02748e;
+  --logo-color: #ffffff;
 
   background-color: var(--bg-primary);
   color: var(--text-primary);
@@ -674,6 +260,10 @@ html {
   color: var(--text-secondary);
 }
 
+:root.dark .footer-section a:hover {
+  color: #0097b2;
+}
+
 /* Ajustement pour le mode sombre */
 :root.dark body {
   background-image: linear-gradient(
@@ -683,9 +273,4 @@ html {
     url("/src/assets/background.png");
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-}
-
-/* Ajoutez ces styles pour le mode sombre */
-:root.dark .logo-container:hover {
-  background-color: rgba(255, 255, 255, 0.1);
 }

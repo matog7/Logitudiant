@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaFacebook, FaGoogle, FaApple, FaTwitter } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaGoogle,
+  FaApple,
+  FaTwitter,
+  FaEyeSlash,
+  FaEye,
+} from "react-icons/fa";
 import "../styles/login.css";
 
 const Login = () => {
@@ -11,6 +18,8 @@ const Login = () => {
     e.preventDefault();
     console.log("Tentative de connexion avec:", { email, password });
   };
+
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   return (
     <div className="login-page">
@@ -44,14 +53,27 @@ const Login = () => {
 
               <div className="form-group">
                 <label htmlFor="password">Mot de passe</label>
-                <input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Entrez votre mot de passe"
-                  required
-                />
+                <div className="input password">
+                  <input
+                    id="password"
+                    type={passwordVisible ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Entrez votre mot de passe"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setPasswordVisible(!passwordVisible)}
+                    className="toggle-password"
+                  >
+                    {passwordVisible ? (
+                      <FaEyeSlash size={20} />
+                    ) : (
+                      <FaEye size={20} />
+                    )}
+                  </button>
+                </div>
                 <Link to="/mot-de-passe-oublie" className="forgot-password">
                   Mot de passe oublié ?
                 </Link>
@@ -60,21 +82,20 @@ const Login = () => {
               <button type="submit" className="submit-button">
                 Se connecter
               </button>
-
               <div className="social-login">
                 <p>OU SE CONNECTER AVEC</p>
                 <div className="social-buttons">
                   <button type="button" className="social-button facebook">
-                    <FaFacebook />
+                    <FaFacebook size={20} />
                   </button>
                   <button type="button" className="social-button apple">
-                    <FaApple />
+                    <FaApple size={20} />
                   </button>
                   <button type="button" className="social-button google">
-                    <FaGoogle />
+                    <FaGoogle size={20} />
                   </button>
                   <button type="button" className="social-button twitter">
-                    <FaTwitter />
+                    <FaTwitter size={20} />
                   </button>
                 </div>
               </div>

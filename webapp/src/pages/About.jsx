@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useLocation } from "react-router-dom";
-import "../styles/About.css";
+import "../styles/about.css";
 
 const About = () => {
   const location = useLocation();
@@ -86,8 +86,8 @@ const About = () => {
           <AccordionDetails className="accordion-content">
             <p>
               Nous conseillons aux étudiants de souscrire à une assurance
-              habitation. Les garanties comme Visale peuvent faciliter l&apos;accès
-              au logement pour les étudiants.
+              habitation. Les garanties comme Visale peuvent faciliter
+              l&apos;accès au logement pour les étudiants.
             </p>
           </AccordionDetails>
         </Accordion>

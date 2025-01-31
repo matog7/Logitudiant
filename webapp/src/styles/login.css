@@ -97,13 +97,14 @@
 
 .form-group label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
   color: var(--text-primary);
   font-family: var(--font-body);
 }
 
 .form-group input {
-  width: 100%;
+  width: 375px;
+  max-width: inherit;
   padding: 0.75rem;
   border: 1px solid var(--border-color);
   border-radius: 8px;
@@ -113,16 +114,47 @@
   color: var(--text-primary);
 }
 
+.input.password {
+  display: flex;
+  align-items: center;
+}
+
+.input.password .toggle-password {
+  width: 55px;
+  height: 45px;
+  margin-left: 0.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  transition: all 0.2s;
+}
+
+.input.password .toggle-password:hover {
+  background: var(--bg-primary);
+  border-color: #ccc;
+  color: #8c95a2;
+}
+
 .form-group input:focus {
   outline: none;
-  border-color: var(--accent-color);
-  box-shadow: 0 0 0 3px rgba(0, 151, 178, 0.2);
+  /* border-color: var(--accent-color); */
+  box-shadow: 0 0 0 1px rgba(0, 151, 178, 0.2);
   background-color: rgba(0, 151, 178, 0.1);
 }
 
 .form-group input::placeholder {
   color: var(--text-secondary);
   opacity: 0.7;
+}
+
+.form-group input:-webkit-autofill {
+  background-color: rgba(0, 151, 178, 0.8) !important; /* Fond sombre */
+  color: #ffffff !important; /* Texte en blanc */
+  border: 2px solid #3498db !important; /* Bordure bleue */
+  transition: background-color 0.3s ease-in-out;
 }
 
 /* Pour Firefox */
@@ -166,7 +198,7 @@
   border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
-  margin-bottom: 2rem;
+  margin: 1rem 0;
   font-family: var(--font-body);
   font-weight: 500;
   transition: background-color 0.2s;
@@ -179,25 +211,25 @@
 .social-login {
   text-align: center;
   font-family: var(--font-body);
+  justify-content: center;
 }
 
 .social-login p {
   color: var(--text-secondary);
   font-size: 0.8rem;
-  margin-bottom: 1rem;
   position: relative;
   font-weight: 500;
+  margin-bottom: 1rem;
 }
 
 .social-buttons {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   justify-content: center;
 }
 
 .social-button {
-  width: 40px;
-  height: 40px;
+  height: 55px;
   border-radius: 50%;
   border: 1px solid var(--border-color);
   background: var(--bg-secondary);
@@ -209,9 +241,26 @@
   color: var(--text-secondary);
 }
 
+.social-button.facebook:hover {
+  color: #1877f2; /* Bleu Facebook */
+}
+
+.social-button.google:hover {
+  background: #db4437; /* Rouge Google */
+  color: white;
+}
+
+.social-button.twitter:hover {
+  color: #1da1f2; /* Bleu Twitter */
+}
+
+.social-button.apple:hover {
+  color: #8c95a2; /* Gris Apple */
+}
+
 .social-button:hover {
   background: var(--bg-primary);
-  color: var(--accent-color);
+  border-color: #ccc;
 }
 
 @media (max-width: 768px) {

@@ -1,8 +1,10 @@
+import { useState, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import moment from "moment";
 import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
-import { MapPin, Loader } from "lucide-react";
+import { MapPin, Loader, ChevronLeft, ChevronRight } from "lucide-react";
 import { Alert } from "@mui/material";
+import "../styles/logement-detail.css";
 
 const MAPS_API_KEY = import.meta.env.VITE_MAPS_API_KEY;
 
@@ -13,30 +15,38 @@ const LogementDetail = () => {
   });
 
   // Simulons des données détaillées (à remplacer par vos vraies données)
-  const logement = {
-    id: id,
-    titre: "Studio moderne au centre-ville",
-    prix: "450€",
-    surface: "18m²",
-    localisation: "Centre-ville",
-    adresse: "1 rue de la Paix, 35000 Rennes",
-    coordinates: {
-      lat: 47.759003301811134,
-      lng: -3.3895119733020054,
-    },
-    image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
-    description: "Magnifique studio entièrement rénové...",
-    equipements: ["Wifi", "Machine à laver", "Cuisine équipée"],
-    charges: "50€",
-    depot: "900€",
-    disponibilite: moment().locale('fr').format('LL'),
-    contact: {
-      nom: "Jean Dupont",
-      telephone: "06 XX XX XX XX",
-      email: "contact@example.com",
-    },
-    proprietaire: "matau56100@gmail.com",
-  };
+  // Tant que l'id ne change pas, les données ne changent pas
+  const logement = useMemo(
+    () => ({
+      id: id,
+      titre: "Studio moderne au centre-ville",
+      prix: "450€",
+      surface: "18m²",
+      localisation: "Centre-ville",
+      adresse: "1 rue de la Paix, 35000 Rennes",
+      coordinates: {
+        lat: 47.759003301811134,
+        lng: -3.3895119733020054,
+      },
+      image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
+      carousel: [
+        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
+        "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af",
+      ],
+      description: "Magnifique studio entièrement rénové...",
+      equipements: ["Wifi", "Machine à laver", "Cuisine équipée"],
+      charges: "50€",
+      depot: "900€",
+      disponibilite: moment().locale("fr").format("LL"),
+      contact: {
+        nom: "Jean Dupont",
+        telephone: "06 XX XX XX XX",
+        email: "contact@example.com",
+      },
+      proprietaire: "matau56100@gmail.com",
+    }),
+    [id]
+  );
 
   const mapContainerStyle = {
     width: "100%",
@@ -47,6 +57,19 @@ const LogementDetail = () => {
   const position = {
     lat: logement.coordinates.lat,
     lng: logement.coordinates.lng,
+  };
+
+  const [photoId, setPhotoId] = useState(0);
+
+  const changePhoto = (dir) => {
+    setPhotoId((prev) => {
+      if (dir === "left") {
+        return prev === 0 ? logement.carousel.length - 1 : prev - 1;
+      } else if (dir === "right") {
+        return prev === logement.carousel.length - 1 ? 0 : prev + 1;
+      }
+      return prev;
+    });
   };
 
   if (loadError) return <div>Erreur de chargement de la carte</div>;
@@ -69,7 +92,18 @@ const LogementDetail = () => {
 
       <div className="detail-content">
         <div className="detail-left">
-          <img src={logement.image} alt={logement.titre} />
+          <div className="carousel">
+            <button onClick={() => changePhoto("left")}>
+              <ChevronLeft size={18} />
+            </button>
+            <img src={logement.carousel[photoId]} alt={logement.titre} />
+            <button onClick={() => changePhoto("right")}>
+              <ChevronRight size={18} />
+            </button>
+          </div>
+          <p style={{ color: "white" }}>
+            {photoId + 1}/{logement.carousel.length}
+          </p>
           <div className="description">
             <h2>Description</h2>
             <p>{logement.description}</p>
