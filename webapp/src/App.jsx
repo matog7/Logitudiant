@@ -12,6 +12,7 @@ import About from "./pages/About";
 import Favorite from "./pages/Favorite";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Signin from "./pages/Signin";
 
 function App() {
   const [logements] = useState([
@@ -113,6 +114,7 @@ function App() {
               element={<Rechercher logements={logements} />}
             />
             <Route path="/connexion" element={<Login />} />
+            <Route path="/inscription" element={<Signin />} />
             <Route path="/a-propos" element={<About />} />
             <Route path="/favoris" element={<Favorite />} />
           </Routes>
