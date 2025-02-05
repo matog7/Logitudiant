@@ -6,6 +6,7 @@
   --bg-secondary: #ffffff;
   --text-primary: #2c3e50;
   --text-secondary: #64748b;
+  --title-primary: #2c3e50;
   --border-color: rgba(0, 0, 0, 0.1);
   --accent-color: #0097b2;
   --accent-hover: #02748e;
@@ -213,7 +214,8 @@ html {
   --text-secondary: #e2e8f0;
   --border-color: rgba(255, 255, 255, 0.1);
   --accent-color: #0097b2;
-  --accent-hover: #02748e;
+  --accent-hover: #eff4f5;
+  --title-primary: #0097b2;
   --logo-color: #ffffff;
 
   background-color: var(--bg-primary);
@@ -239,8 +241,8 @@ html {
 
 :root.dark .nav-links a:hover,
 :root.dark .nav-links a.active {
-  background: rgba(0, 151, 178, 0.2);
-  color: var(--accent-color);
+  background: rgba(242, 247, 248, 0.4);
+  color: var(--accent-hover);
 }
 
 :root.dark .nav-button {

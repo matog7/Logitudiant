@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../assets/Logo Logitudiant.png";
+import logo from "../assets/Logo Logitudiant retravaillé.png";
 import { Sun, Moon } from "lucide-react";
 import "../styles/nav.css";
 

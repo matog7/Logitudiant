@@ -35,8 +35,8 @@
 }
 
 .logo-container img {
-  width: 110px;
-  height: 110px;
+  width: 130px;
+  height: 130px;
   padding: 0.5rem;
   transition: filter 0.3s ease;
   /* #0097ba en filtre pour le logo */
@@ -54,7 +54,7 @@
   text-decoration: none;
   display: flex;
   align-items: center;
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
 }
 
 .nav-links {
@@ -73,12 +73,12 @@
 }
 
 .nav-links a:hover {
-  color: #02748e;
+  color: var(--accent-hover);
   background: rgba(0, 151, 178, 0.2);
 }
 
 .nav-links a.active {
-  color: #02748e;
+  color: var(--accent-hover);
   font-weight: 500;
   background: rgba(0, 151, 178, 0.2);
 }

@@ -38,17 +38,18 @@
 
 .logement-info {
   padding: 1rem; /* Réduit de 1.5rem à 1rem */
+  overflow: hidden;
 }
 
 .logement-info h2 {
   font-size: 1.1rem; /* Réduit de 1.25rem à 1.1rem */
   margin-bottom: 0.5rem;
-  color: #2c3e50;
+  color: var(--title-primary);
 }
 
 .prix {
   font-size: medium;
-  color: #02748e;
+  color: var(--accent-hover);
   font-weight: bold;
   margin-bottom: 1rem;
 }
